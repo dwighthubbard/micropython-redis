@@ -181,14 +181,3 @@ class Client(object):
 
     def save(self):
         return self.execute_command('SAVE')
-
-
-
-
-if __name__ == '__main__':
-    r = Redis('localhost', 6666)
-    # print(r.keys('*'))
-    # print(r.set('key1', 'value1'))
-    # print(r.get('key1'))
-    r.lset('testlist', "0", 'foo')
-    print(r.keys('*'))

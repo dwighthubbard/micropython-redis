@@ -15,7 +15,7 @@ from unittest import main, TestCase
 
 base_redis_command = """import sys
 sys.path.insert(0, '{cwd}')
-from redis.redis import Redis
+from redis import Redis
 r=Redis(port={port})
 {command}
 """
@@ -70,16 +70,8 @@ class TestRedisListOperations(TestCase):
 
 
     def test_lpush_new_list_integer_value(self):
-        command = """import sys
-sys.path.insert(0, '{cwd}')
-from redis.redis import Redis
-r=Redis(port={port})
-r.lpush("testlist", 1)""".format(
-            port=self.redis_test_port, cwd=os.getcwd()
-        )
         command = self.generate_redis_script('r.lpush("testlist", 1)')
         self.micropythonRun(command)
-
         result = self.redis_server.lrange('testlist', 0, -1)
         self.assertEqual(result, [b'1'])
 
