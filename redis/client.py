@@ -75,7 +75,7 @@ class Connection(object):
             if isinstance(arg, str):
                 com += repr(arg).encode()
             else:
-                com += arg
+                com += repr(arg)
         com += b'\r\n'
         logger.debug('command: ' + com.decode().strip())
         self.socket.send(com)
@@ -94,14 +94,45 @@ class Connection(object):
         return line_buffer
 
 
-class Redis(object):
+class Client(object):
     def __init__(self, host=None, port=6379):
         if not host:
             host = 'localhost'
         self.connection = Connection(host, port)
 
+    def create_redis_array_string(self, items):
+        """
+        Generate a redis array string
+
+        Parameters
+        ----------
+        items : list
+            The items to be in the redis array string
+
+        Returns
+        -------
+        bytes
+            Redis RESP bytestream representation of the array
+        """
+        stream = '*{0}\r\n'.format(len(items)).encode()
+
+        # Add each element to the stream in turn
+        for item in items:
+            item_bytestream = self.convert_to_bytestream(item)
+
+            # Add the item length to the stream
+            stream += b'$' + str(len(item_bytestream)).encode() + b'\r\n'
+
+            # Now add the data
+            stream += item_bytestream + b'\r\n'
+
+        return stream
+
     def execute_command(self, command, *args):
-        self.connection.send_command(command, *args)
+        # self.connection.send_command(command, *args)
+        args = [command] + list(args)
+        bytestream = self.create_redis_array_string(args)
+        self.connection.socket.send(bytestream)
         return self.get_response()
 
     def get_response(self):
@@ -124,25 +155,34 @@ class Redis(object):
         else:
             raise InvalidResponse('Protocol Error: %s' % response.decode())
 
-    def blpop(self, *args):
-        return self.execute_command('BLPOP', *args)
+    def convert_to_bytestream(self, value):
+        """
+        Return a bytestream of the value
 
-    def get(self, *args):
-        return self.execute_command('GET', *args)
+        Parameters
+        ----------
+        value
 
-    def keys(self, *args):
-        return self.execute_command('KEYS', *args)
+        Returns
+        -------
+        bytes
+            A bytestream of the value
+        """
 
-    def lset(self, *args):
-        return self.execute_command('LSET', *args)
+        if isinstance(value, bytes):
+            return value
+        elif isinstance(value, int):
+            return str(value).encode()
+        elif isinstance(value, float):
+            return repr(value).encode()
+        elif isinstance(value, str):
+            return value.encode()
+        return str(value).encode()
 
     def save(self):
         return self.execute_command('SAVE')
 
-    def set(self, *args):
-        if self.execute_command('SET', *args) in [b'OK']:
-            return True
-        return False
+
 
 
 if __name__ == '__main__':
