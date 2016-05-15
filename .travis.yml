@@ -1,0 +1,21 @@
+language: python
+sudo: false
+python: 3.5
+env:
+  - TOX_ENV=py35
+notifications:
+  irc: "chat.freenode.net#micropython-redis"
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env:
+      - TOX_ENV=build_docs
+install:
+  - pip install --upgrade pip setuptools tox virtualenv coveralls
+script:
+  - tox -v -v -e $TOX_ENV
+after_success:
+  coveralls
+after_failure:
+  - for X in .tox/$TOX_ENV/log/*; do echo "$X\n"; cat "$X"; echo "\n\n"; done
+  - echo "pip.log\n"; cat $HOME/.pip/pip.log
