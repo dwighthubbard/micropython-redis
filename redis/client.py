@@ -2,7 +2,6 @@
 """
 Redis Client for embedded python environments
 """
-import logging
 import socket
 try:
     import ssl
@@ -77,7 +76,6 @@ class Connection(object):
             else:
                 com += repr(arg)
         com += b'\r\n'
-        logger.debug('command: ' + com.decode().strip())
         self.socket.send(com)
 
     def readline(self):
@@ -168,13 +166,16 @@ class Client(object):
         bytes
             A bytestream of the value
         """
-
+        try:
+            if isinstance(value, float):
+                return repr(value).encode()
+        except NameError:
+            # Platform doesn't support floating point
+            pass
         if isinstance(value, bytes):
             return value
         elif isinstance(value, int):
             return str(value).encode()
-        elif isinstance(value, float):
-            return repr(value).encode()
         elif isinstance(value, str):
             return value.encode()
         return str(value).encode()

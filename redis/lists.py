@@ -2,6 +2,9 @@ from .client import Client
 
 
 class RedisLists(Client):
+    """
+    Redis Client with support for all Redis List operations
+    """
     def blpop(self, *args):
         return self.execute_command('BLPOP', *args)
 
