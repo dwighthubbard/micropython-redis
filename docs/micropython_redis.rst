@@ -47,3 +47,10 @@ redis.StrictRedis() Class
    :members:
    :inherited-members:
    :show-inheritance:
+
+redis.connection.RedisConnection() Class
+========================================
+.. autoclass:: redis.connection.RedisConnection
+   :members:
+   :inherited-members:
+   :show-inheritance:
