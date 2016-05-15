@@ -10,9 +10,6 @@ except ImportError:
     ssl_support = False
 
 
-logger = logging.getLogger(__name__)
-
-
 class RedisError(Exception):
     pass
 

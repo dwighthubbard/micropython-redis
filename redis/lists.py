@@ -5,8 +5,28 @@ class RedisLists(Client):
     """
     Redis Client with support for all Redis List operations
     """
-    def blpop(self, *args):
-        return self.execute_command('BLPOP', *args)
+    def blpop(self, *keys, timeout=0):
+        """
+        Remove and get the first element of a list or block until one is available
+
+        Parameters
+        ----------
+        *keys
+            Key or keys to get the first element from
+
+        timeout : int, optional
+            Maximum time to block waiting for the key, if not specified will wait forever.
+
+        Returns
+        -------
+        First element from the list, or None
+        """
+        if timeout:
+            keys = tuple(list(keys) + [timeout])
+        result = self.execute_command('BLPOP', *keys)
+        if result == []:
+            return None
+        return result
 
     def brpop(self, *args):
         return self.execute_command('BRPOP', *args)
