@@ -54,3 +54,17 @@ redis.connection.RedisConnection() Class
    :members:
    :inherited-members:
    :show-inheritance:
+
+redis.keys.RedisKeys() Class
+========================================
+.. autoclass:: redis.keys.RedisKeys
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.pubsub.RedisPubSub() Class
+========================================
+.. autoclass:: redis.pubsub.RedisPubSub
+   :members:
+   :inherited-members:
+   :show-inheritance:

@@ -35,7 +35,7 @@ Currently this module is not feature complete, here is the current status
 +---------------------+-----------------+-----------+
 | Lists               | Complete        | Partial   |
 +---------------------+-----------------+-----------+
-| Publish/Subscribe   | Not Implemented |           |
+| Publish/Subscribe   | Not Complete    | None      |
 +---------------------+-----------------+-----------+
 | Scripting           | Not Planned     |           |
 +---------------------+-----------------+-----------+
