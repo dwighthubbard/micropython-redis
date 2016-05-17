@@ -14,7 +14,7 @@ tool is used to do the installation from the Python package repositories.
 
 ### Installing on micropython unix
 
-Use the *pip-micropython* tool to install on micropython.  Will install pip-micropython t the default micropython
+Use the **pip-micropython** tool to install on micropython.  Will install pip-micropython t the default micropython
 lib directory.
 
     $ pip-micropython install micropython-redis
@@ -32,13 +32,13 @@ If you don't already have a library directory on the local system to hold the mi
 #### Step 2. Set the MICROPATH environment variable to the full path of the lib directory.
 
 Set the MICROPATH environment variable to point to the library directory.  If you created the directory in the
-current directory as shown in *Step 1* you could run:
+current directory as shown in **Step 1** you could run:
 
     $ export MICROPATH="`pwd`/lib"
 
 #### Step 3. Run pip-micropython to install micropython-redis into the lib directory.
 
-Use the *pip-micropython* tool to install the *micropython-redis* package.
+Use the **pip-micropython** tool to install the **micropython-redis** package.
 
     $ pip-micropython install micropython-redis
 
