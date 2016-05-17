@@ -24,16 +24,11 @@ lib directory.
 To install on micropython embedded platforms:
 
 1. Create a lib directory to hold the python code for the platform
-
-    $ mkdir lib
-    
 2. Set the MICROPATH environment variable to the full path of the lib directory.
-
-    $ export MICROPATH="`pwd`/lib"
-    
 3 Run pip-micropython to install micropython-redis into the lib directory.
-
-    $ pip-micropython install micropython-redis
-    
 4. Copy the lib directory to the embedded device.  
 
+    $ mkdir lib
+    $ export MICROPATH="`pwd`/lib"
+    $ pip-micropython install micropython-redis
+ 
