@@ -23,6 +23,6 @@ Please help with the development if you are interested in this module.""",
     maintainer='Dwight Hubbard',
     maintainer_email='dwight@dwighthubbard.com',
     license='MIT',
-    packages=['redis.client'],
+    packages=['redis'],
     zip_safe=True,
 )

@@ -22,7 +22,6 @@ class ConnectionError(Exception):
     pass
 
 
-
 class Connection(object):
     def __init__(self, host=None, port=6379, use_ssl=False, timeout=10):
         """
