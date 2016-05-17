@@ -8,7 +8,7 @@ from setuptools import setup
 setup(
     name='micropython-redis',
     version='0.0.1',
-    description='redis client module for MicroPython',
+    description='redis module for MicroPython',
     long_description="""This is a redis client module implemented specifically for MicroPython.
 
 As a result, this module does not support functionality not available on embedded environments and it is structured to allow operating in environments with limited resources.
@@ -19,6 +19,13 @@ Please help with the development if you are interested in this module.""",
     url='https://github.com/dhubbard/micropython-redis',
     author='Dwight Hubbard',
     author_email="dwight@dwighthubbard.com",
+    install_requires=[
+        'micropython-redis.client',
+        'micropython-redis.connection',
+        'micropython-redis.key',
+        'micropython-redis.list',
+        'micropython-redis.pubsub',
+    ],
     maintainer='Dwight Hubbard',
     maintainer_email='dwight@dwighthubbard.com',
     license='MIT',

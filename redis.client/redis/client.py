@@ -86,6 +86,7 @@ class Connection(object):
             except IndexError:
                 pass
             c = self.socket.recv(1)
+        print(line_buffer)
         return line_buffer
 
 
@@ -124,10 +125,7 @@ class Client(object):
         return stream
 
     def execute_command(self, command, *args):
-        # self.connection.send_command(command, *args)
-        args = [command] + list(args)
-        bytestream = self.create_redis_array_string(args)
-        self.connection.socket.send(bytestream)
+        self.run_command(command, *args)
         return self.get_response()
 
     def get_response(self):
@@ -149,6 +147,12 @@ class Client(object):
             return [self.get_response() for item in range(int(response_value))]
         else:
             raise InvalidResponse('Protocol Error: %s' % response.decode())
+
+    def run_command(self, command, *args):
+        # self.connection.send_command(command, *args)
+        args = [command] + list(args)
+        bytestream = self.create_redis_array_string(args)
+        self.connection.socket.send(bytestream)
 
     def convert_to_bytestream(self, value):
         """

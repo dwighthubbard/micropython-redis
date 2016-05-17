@@ -1,7 +1,7 @@
 from .client import Client
 
 
-class RedisConnection(Client):
+class Connection(Client):
     def auth(self, *args):
         """
         Authenticate to the server

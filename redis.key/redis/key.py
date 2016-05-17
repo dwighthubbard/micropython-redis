@@ -1,7 +1,7 @@
 from .client import Client
 
 
-class RedisKeys(Client):
+class Key(Client):
     def delete(self, *args):
         return self.execute_command('DEL', *args)
 

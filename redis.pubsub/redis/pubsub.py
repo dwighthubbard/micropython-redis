@@ -1,7 +1,7 @@
 from .client import Client
 
 
-class RedisPubSub(Client):
+class PubSub(Client):
     def psubscribe(self, *args):
         return self.execute_command('PSUBSCRIBE', *args)
 
@@ -14,12 +14,14 @@ class RedisPubSub(Client):
     def punsubscribe(self, *args):
         return self.execute_command('PUNSUBSCRIBE', *args)
 
-
     def psubscribe(self, *args):
         return self.execute_command('PSUBSCRIBE', *args)
 
     def subscribe(self, *args):
-        return self.execute_command('SUBSCRIBE', *args)
+        for channel in args[1:]:
+            self.run_command('SUBSCRIBE', channel)
+        while True:
+            self.get_response()
 
     def unsubscribe(self, *args):
         return self.execute_command('UNSUBSCRIBE', *args)

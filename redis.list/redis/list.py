@@ -1,7 +1,7 @@
 from .client import Client
 
 
-class RedisLists(Client):
+class List(Client):
     """
     Redis Client with support for all Redis List operations
     """
