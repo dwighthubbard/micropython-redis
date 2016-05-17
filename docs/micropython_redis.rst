@@ -48,23 +48,86 @@ redis.StrictRedis() Class
    :inherited-members:
    :show-inheritance:
 
-redis.connection.RedisConnection() Class
-========================================
-.. autoclass:: redis.connection.RedisConnection
+redis.connection.Connection() Class
+===================================
+.. autoclass:: redis.connection.Connection
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.keys.RedisKeys() Class
-========================================
-.. autoclass:: redis.keys.RedisKeys
+redis.geo.Geo() Class
+=====================
+.. autoclass:: redis.geo.Geo
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.pubsub.RedisPubSub() Class
-========================================
-.. autoclass:: redis.pubsub.RedisPubSub
+redis.hash.Hash() Class
+=======================
+.. autoclass:: redis.hash.Hash
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.hyperloglog.HyperLogLog() Class
+=====================================
+.. autoclass:: redis.hyperloglog.HyperLogLog
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.key.Key() Class
+=====================
+.. autoclass:: redis.key.Key
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.list.List() Class
+=======================
+.. autoclass:: redis.list.List
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.pubsub.PubSub() Class
+===========================
+.. autoclass:: redis.pubsub.PubSub
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.server.Server() Class
+===========================
+.. autoclass:: redis.server.Server
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.set.Set() Class
+=====================
+.. autoclass:: redis.set.Set
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.sortedset.SortedSet() Class
+=================================
+.. autoclass:: redis.sortedset.SortedSet
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.string.String() Class
+===========================
+.. autoclass:: redis.string.String
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+redis.transaction.Transaction() Class
+=====================================
+.. autoclass:: redis.transaction.Transaction
    :members:
    :inherited-members:
    :show-inheritance:

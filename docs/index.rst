@@ -9,6 +9,7 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
 
+   install.md
    micropython_redis.rst
 
 

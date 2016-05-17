@@ -25,4 +25,11 @@ class Redis(
     # String,
     # Transaction
 ):
+    """
+    Primary Redis Client Class.
+
+    This class provides a Redis Client with all the functionality of the supported subclasses.
+
+    This class is intended to be mostly compatible with the redis-py redis.Redis()/redis.StrictRedis() classes.
+    """
     pass

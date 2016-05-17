@@ -85,7 +85,6 @@ class Connection(object):
             except IndexError:
                 pass
             c = self.socket.recv(1)
-        print(line_buffer)
         return line_buffer
 
 

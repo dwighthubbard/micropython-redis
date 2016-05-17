@@ -3,7 +3,7 @@
 ls -1d redis redis.*| while read package
 do
     cd "$package"
-    micropython setup.py sdist
+    python3 setup.py sdist upload
     mv dist/* ../dist
     cd ..
 done
