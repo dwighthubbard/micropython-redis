@@ -1,8 +1,23 @@
 [run]
 branch = True
-source = uredis
 cover_pylib = False
+source=
+    uredis
 
 [report]
 ignore_errors = True
-# omit = *redis.*
+show_missing = 1
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+omit=
+    *psutil/*
+    *redislite/*
+    */redis/*
+    *distutils/*
+    *ctypes*
+    *encodings/*
+    *getopt.py*
+    *stringprep.py*
+    *uuid.py*

@@ -6,3 +6,7 @@ from .uredis import Redis as StrictRedis
 
 __version__ = '0.0.5'
 __copyright__ = "Copyright 2016 Dwight Hubbard"
+
+all = [
+    'client', 'connection', 'key', 'list', 'uredis'
+]

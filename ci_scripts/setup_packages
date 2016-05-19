@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import argparse
 import contextlib
 import os
@@ -16,14 +16,34 @@ def change_directory(path):
         os.chdir(cwd)
 
 
-def setup_in_directory(path, setup_arguments=[]):
+def update_setup_version(filename=None, version=None):
+    if not filename:
+        filename = 'setup.py'
+    if not version:
+        version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', '0')
+    infile = None
+    with open(filename) as setup_handle:
+        infile = setup_handle.readlines()
+    if infile:
+        with open(filename, 'w') as setup_handle:
+            for line in infile:
+                if 'version=' in line:
+                    temp = line.split('=')
+                    temp[-1] = repr(version) + ',\n'
+                    line = '='.join(temp)
+                setup_handle.write(line)
+                print(line, end='')
+
+
+def setup_in_directory(path, setup_arguments=None, version=None):
     if not setup_arguments:
         setup_arguments = ['sdist']
     with change_directory(path):
+        update_setup_version(version=version)
         subprocess.check_call(
             [
                 sys.executable,
-                './setup.py'
+                './setup.py',
             ] + setup_arguments
         )
         for f in os.listdir('dist'):
@@ -44,6 +64,6 @@ def setup_packages(setup_arguments=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--setup_argument', nargs='*', default=['sdist'])
+    parser.add_argument('setup_argument', nargs='*', default=[])
     args = parser.parse_args()
     setup_packages(setup_arguments=args.setup_argument)

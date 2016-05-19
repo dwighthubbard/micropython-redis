@@ -6,11 +6,7 @@ Tests to validate redis list functionality is working properly with micropython
 #
 # 1. These tests should be run with a cpython interpreter with the redislite module installed.
 # 2. The micropython executable should be accesible in the path.
-import json
-import os
 import redislite
-import subprocess
-import tempfile
 from unittest import main, TestCase
 import redis
 import uredis
