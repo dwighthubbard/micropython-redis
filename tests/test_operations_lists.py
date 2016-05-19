@@ -16,25 +16,25 @@ class TestRedisListOperations(TestCase):
     redis_test_port = 7899
 
     def setUp(self):
-        self.redis_server = redislite.Redis(serverconfig={'host': '127.0.0.1', 'port': self.redis_test_port})
+        self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
 
     def tearDown(self):
         self.redis_server.shutdown()
 
     def test_lrange_empty_list(self):
         result = redis.Redis(port=self.redis_test_port).lrange("testlist", 0, -1)
-        uresult = uredis.Redis(port=self.redis_test_port).lrange("utestlist", 0, -1)
+        uresult = uredis.Redis(host='127.0.0.1', port=self.redis_test_port).lrange("utestlist", 0, -1)
         self.assertEqual(uresult, result)
 
     def test_blpop_empty_list_with_timeout(self):
         result = redis.Redis(port=self.redis_test_port).blpop('testlist', timeout=1)
-        uresult = uredis.Redis(port=self.redis_test_port).blpop('utestlist', timeout=1)
+        uresult = uredis.Redis(host='127.0.0.1', port=self.redis_test_port).blpop('utestlist', timeout=1)
         self.assertEqual(uresult, result)
 
 
     def test_lpush_new_list_integer_value(self):
         result = redis.Redis(port=self.redis_test_port).lpush('testlist', 1)
-        uresult = uredis.Redis(port=self.redis_test_port).lpush('utestlist', 1)
+        uresult = uredis.Redis(host='127.0.0.1', port=self.redis_test_port).lpush('utestlist', 1)
         self.assertEqual(uresult, result)
 
 
