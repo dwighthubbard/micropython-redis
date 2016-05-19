@@ -1,0 +1,8 @@
+[run]
+branch = True
+source = uredis
+cover_pylib = False
+
+[report]
+ignore_errors = True
+# omit = *redis.*

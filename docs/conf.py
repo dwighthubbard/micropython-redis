@@ -16,7 +16,7 @@ from recommonmark.parser import CommonMarkParser
 
 html_theme = 'default'
 
-import redis as doc_module
+import uredis as doc_module
 
 
 version = doc_module.__version__

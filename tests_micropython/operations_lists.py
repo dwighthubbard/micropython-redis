@@ -17,7 +17,7 @@ from unittest import main, TestCase
 base_redis_command = """import json
 import sys
 sys.path.insert(0, '{cwd}')
-from redis import Redis
+from uredis import Redis
 r=Redis(port={port})
 result = None
 {command}

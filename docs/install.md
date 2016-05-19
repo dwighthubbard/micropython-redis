@@ -34,13 +34,13 @@ If you don't already have a library directory on the local system to hold the mi
 Set the MICROPATH environment variable to point to the library directory.  If you created the directory in the
 current directory as shown in **Step 1** you could run:
 
-    $ export MICROPATH="`pwd`/lib"
+    $ export MICROPYPATH="`pwd`/lib"
 
-#### Step 3. Run pip-micropython to install micropython-redis into the lib directory.
+#### Step 3. Run upip to install micropython-redis into the lib directory.
 
-Use the **pip-micropython** tool to install the **micropython-redis** package.
+Use the **upip** module to install the **micropython-redis** package.
 
-    $ pip-micropython install micropython-redis
+    $ micropython -m upip install micropython-redis
 
 #### Step 4. Copy the lib directory to the embedded device.  
 
