@@ -4,130 +4,130 @@ Code Documentation
 Module
 ======
 
-.. automodule:: redis
+.. automodule:: uredis
     :synopsis: Redis client
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: redis.client
+.. automodule:: uredis.client
     :synopsis: Redis client
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: redis.connection
+.. automodule:: uredis.connection
     :synopsis: Redis client with only Redis Connection command functionality
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: redis.keys
+.. automodule:: uredis.keys
     :synopsis: Redis client with Redis Keys command functionality
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: redis.list
+.. automodule:: uredis.list
     :synopsis: Redis client with Redis Lists command functionality
     :members:
     :inherited-members:
     :show-inheritance:
 
-redis.Redis() Class
-===================
-.. autoclass:: redis.Redis
+uredis.Redis() Class
+====================
+.. autoclass:: uredis.Redis
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.StrictRedis() Class
-=========================
-.. autoclass:: redis.StrictRedis
+uredis.StrictRedis() Class
+==========================
+.. autoclass:: uredis.StrictRedis
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.connection.Connection() Class
-===================================
-.. autoclass:: redis.connection.Connection
+uredis.connection.Connection() Class
+====================================
+.. autoclass:: uredis.connection.Connection
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.geo.Geo() Class
-=====================
-.. autoclass:: redis.geo.Geo
+uredis.geo.Geo() Class
+======================
+.. autoclass:: uredis.geo.Geo
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.hash.Hash() Class
-=======================
-.. autoclass:: redis.hash.Hash
+uredis.hash.Hash() Class
+========================
+.. autoclass:: uredis.hash.Hash
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.hyperloglog.HyperLogLog() Class
-=====================================
-.. autoclass:: redis.hyperloglog.HyperLogLog
+uredis.hyperloglog.HyperLogLog() Class
+======================================
+.. autoclass:: uredis.hyperloglog.HyperLogLog
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.key.Key() Class
-=====================
-.. autoclass:: redis.key.Key
+uredis.key.Key() Class
+======================
+.. autoclass:: uredis.key.Key
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.list.List() Class
-=======================
-.. autoclass:: redis.list.List
+uredis.list.List() Class
+========================
+.. autoclass:: uredis.list.List
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.pubsub.PubSub() Class
-===========================
-.. autoclass:: redis.pubsub.PubSub
+uredis.pubsub.PubSub() Class
+============================
+.. autoclass:: uredis.pubsub.PubSub
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.server.Server() Class
-===========================
+uredis.server.Server() Class
+============================
 .. autoclass:: redis.server.Server
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.set.Set() Class
-=====================
-.. autoclass:: redis.set.Set
+uredis.set.Set() Class
+======================
+.. autoclass:: uredis.set.Set
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.sortedset.SortedSet() Class
-=================================
-.. autoclass:: redis.sortedset.SortedSet
+uredis.sortedset.SortedSet() Class
+==================================
+.. autoclass:: uredis.sortedset.SortedSet
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.string.String() Class
-===========================
-.. autoclass:: redis.string.String
+uredis.string.String() Class
+============================
+.. autoclass:: uredis.string.String
    :members:
    :inherited-members:
    :show-inheritance:
 
-redis.transaction.Transaction() Class
-=====================================
-.. autoclass:: redis.transaction.Transaction
+uredis.transaction.Transaction() Class
+======================================
+.. autoclass:: uredis.transaction.Transaction
    :members:
    :inherited-members:
    :show-inheritance:

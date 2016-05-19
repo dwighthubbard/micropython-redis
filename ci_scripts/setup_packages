@@ -32,8 +32,18 @@ def update_setup_version(filename=None, version=None):
                     temp[-1] = repr(version) + ',\n'
                     line = '='.join(temp)
                 setup_handle.write(line)
-                print(line, end='')
-
+    if os.path.exists('uredis/__init__.py'):
+        infile = None
+        with open('uredis/__init__.py') as init_handle:
+            infile = init_handle.readlines()
+        if infile:
+            with open('uredis/__init__.py', 'w') as init_handle:
+                for line in infile:
+                    if '__version__' in line:
+                        temp = line.split('=')
+                        temp[-1] = ' ' + repr(version) + '\n'
+                        line = '='.join(temp)
+                    init_handle.write(line)
 
 def setup_in_directory(path, setup_arguments=None, version=None):
     if not setup_arguments:

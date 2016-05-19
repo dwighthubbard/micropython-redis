@@ -9,15 +9,15 @@ Use pip to install on Python3 or PyPy3.
     
 ## Installing on micropython
 
-The installation process differs depending on the version of micropython being used.  However the *pip-micropython* 
-tool is used to do the installation from the Python package repositories.
+The installation process differs depending on the version of micropython being used.  However the **upip** module 
+is used to do the installation from the Python package repositories.
 
 ### Installing on micropython unix
 
-Use the **pip-micropython** tool to install on micropython.  Will install pip-micropython t the default micropython
-lib directory.
+Use the micropython **upip** module to install on micropython.  The following Will install the **uredis** module in the
+default micropython lib directory:
 
-    $ pip-micropython install micropython-redis
+    $ micropython -m upip install micropython-redis
 
 ### Installing on micropython embedded platforms
 
@@ -31,12 +31,12 @@ If you don't already have a library directory on the local system to hold the mi
 
 #### Step 2. Set the MICROPATH environment variable to the full path of the lib directory.
 
-Set the MICROPATH environment variable to point to the library directory.  If you created the directory in the
+Set the MICROPYPATH environment variable to point to the library directory.  If you created the directory in the
 current directory as shown in **Step 1** you could run:
 
     $ export MICROPYPATH="`pwd`/lib"
 
-#### Step 3. Run upip to install micropython-redis into the lib directory.
+#### Step 3. Use hte upip module to install micropython-redis into the lib directory.
 
 Use the **upip** module to install the **micropython-redis** package.
 
