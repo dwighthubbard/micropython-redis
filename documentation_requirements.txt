@@ -1,2 +1,2 @@
 recommonmark
-micropython-redis
+micropython-redis>=0.0.10
