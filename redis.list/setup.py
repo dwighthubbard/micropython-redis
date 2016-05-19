@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis.list',
-    version='0.0.7',
+    version='0.0.8',
     description='redis client module for MicroPython',
     long_description="""This is a redis client module implemented specifically for MicroPython.
 

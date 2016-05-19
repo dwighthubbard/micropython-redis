@@ -38,6 +38,8 @@ def update_setup_version(filename=None, version=None):
 def setup_in_directory(path, setup_arguments=None, version=None):
     if not setup_arguments:
         setup_arguments = ['sdist']
+    if not os.path.exists('dist'):
+        os.mkdir('dist')
     with change_directory(path):
         update_setup_version(version=version)
         subprocess.check_call(
