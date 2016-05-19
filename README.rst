@@ -1,3 +1,8 @@
+.. image:: https://travis-ci.org/dwighthubbard/micropython-redis.svg?branch=master
+    :target: https://travis-ci.org/dwighthubbard/micropython-redis
+
+-----------------------------------------------------------------------------------------------------------------------
+
 micropython-redis
 =================
 
