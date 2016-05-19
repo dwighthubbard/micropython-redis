@@ -16,7 +16,7 @@ class TestRedisListOperations(TestCase):
     redis_test_port = 7899
 
     def setUp(self):
-        self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
+        self.redis_server = redislite.Redis(serverconfig={'host': '127.0.0.1', 'port': self.redis_test_port})
 
     def tearDown(self):
         self.redis_server.shutdown()
