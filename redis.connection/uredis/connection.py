@@ -2,7 +2,7 @@ from .client import Client
 
 
 class Connection(Client):
-    def auth(self, *args):
+    def auth(self, password):  # pragma: no cover
         """
         Authenticate to the server
 
@@ -11,7 +11,7 @@ class Connection(Client):
         password : str
             The password to authenticate with
         """
-        return self.execute_command('AUTH', *args)
+        return self.execute_command('AUTH', password)
 
     def echo(self, *args):
         """Echo the given string
@@ -25,9 +25,16 @@ class Connection(Client):
 
     def ping(self, *args):
         """Ping the server"""
-        return self.execute_command('PING', *args)
+        try:
+            result = self.execute_command('PING', *args)
+        except:
+            result = None
 
-    def select(self, *args):
+        if result == b'PONG':
+            return True
+        return False
+
+    def select(self, *args):  # pragma: no cover
         """
         Change the selected database
 

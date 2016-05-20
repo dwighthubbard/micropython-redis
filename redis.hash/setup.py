@@ -6,10 +6,10 @@ from setuptools import setup
 
 
 setup(
-    name='micropython-redis.connection',
+    name='micropython-redis.hash',
     version='0.0.14',
-    description='redis connection module for MicroPython',
-    long_description="""This is a redis connection module implemented specifically for MicroPython.
+    description='redis hash module for MicroPython',
+    long_description="""This is a redis hash module implemented specifically for MicroPython.
 
 As a result, this module does not support functionality not available on embedded environments and it is structured to allow operating in environments with limited resources.
 

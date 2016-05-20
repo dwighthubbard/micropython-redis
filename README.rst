@@ -28,11 +28,11 @@ Currently this module is not feature complete, here is the current status
 +=====================+=================+===========+
 | Cluster             | Not Planned     |           |
 +---------------------+-----------------+-----------+
-| Connection          | Complete        | No        |
+| Connection          | Complete        | 100%      |
 +---------------------+-----------------+-----------+
-| Geo                 | Not Implemented |           |
+| Geo                 | Complete        | None      |
 +---------------------+-----------------+-----------+
-| Hashes              | Not Implemented |           |
+| Hashes              | Complete        | 100%      |
 +---------------------+-----------------+-----------+
 | HyperLogLog         | Not Implemented |           |
 +---------------------+-----------------+-----------+

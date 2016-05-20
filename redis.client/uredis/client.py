@@ -3,10 +3,10 @@
 Redis Client for embedded python environments
 """
 import socket
-try:
+try:  # pragma: no cover
     import ssl
     ssl_support = True
-except ImportError:
+except ImportError:  # pragma: no cover
     ssl_support = False
 
 
@@ -59,7 +59,6 @@ class Connection(object):
         if ssl_support and use_ssl:
             self.socket = ssl.wrap_socket(self.socket)
 
-
     def disconnect(self):
         self.socket.close()
 
@@ -89,10 +88,13 @@ class Connection(object):
 
 
 class Client(object):
-    def __init__(self, host=None, port=6379):
+    def __init__(self, host=None, port=6379, password=None):
         if not host:
-            host = 'localhost'
+            host = '127.0.0.1'
         self.connection = Connection(host, port)
+
+        if password:
+            self.connection.send_command('AUTH', password)
 
     def create_redis_array_string(self, items):
         """
