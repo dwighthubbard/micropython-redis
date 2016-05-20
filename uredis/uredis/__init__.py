@@ -4,9 +4,9 @@
 from .uredis import Redis
 from .uredis import Redis as StrictRedis
 
-__version__ = '0.0.14'
+__version__ = '0.0.16'
 __copyright__ = "Copyright 2016 Dwight Hubbard"
 
 all = [
-    'client', 'connection', 'geo', 'key', 'list', 'pubsub', 'uredis'
+    'client', 'connection', 'geo', 'hash', 'key', 'list', 'pubsub', 'uredis'
 ]
