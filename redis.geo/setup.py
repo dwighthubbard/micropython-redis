@@ -6,10 +6,10 @@ from setuptools import setup
 
 
 setup(
-    name='micropython-redis.key',
+    name='micropython-redis.geo',
     version='0.0.11',
-    description='redis key module for MicroPython',
-    long_description="""This is a redis key module implemented specifically for MicroPython.
+    description='redis geo module for MicroPython',
+    long_description="""This is a redis geo module implemented specifically for MicroPython.
 
 As a result, this module does not support functionality not available on embedded environments and it is structured to allow operating in environments with limited resources.
 

@@ -1,4 +1,5 @@
 from .connection import Connection
+from .geo import Geo
 # from .hash import Hash
 # from .hyperloglog import HyperLogLog
 from .key import Key
@@ -13,7 +14,7 @@ from .list import List
 
 class Redis(
     Connection,
-    # Geo,
+    Geo,
     # Hash,
     # HyperLogLog,
     Key,
