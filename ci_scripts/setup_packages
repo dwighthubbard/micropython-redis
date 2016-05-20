@@ -6,6 +6,9 @@ import subprocess
 import sys
 
 
+failed = []
+
+
 @contextlib.contextmanager
 def change_directory(path):
     cwd = os.getcwd()
@@ -46,18 +49,22 @@ def update_setup_version(filename=None, version=None):
                     init_handle.write(line)
 
 def setup_in_directory(path, setup_arguments=None, version=None):
+    global failed
     if not setup_arguments:
         setup_arguments = ['sdist']
     if not os.path.exists('dist'):
         os.mkdir('dist')
     with change_directory(path):
         update_setup_version(version=version)
-        subprocess.check_call(
-            [
-                sys.executable,
-                './setup.py',
-            ] + setup_arguments
-        )
+        try:
+            subprocess.check_call(
+                [
+                    sys.executable,
+                    './setup.py',
+                ] + setup_arguments
+            )
+        except subprocess.CalledProcessError:
+            failed.append(path)
         for f in os.listdir('dist'):
             filename = os.path.join('dist', f)
             dest_filename = os.path.join('../dist', f)
@@ -79,3 +86,5 @@ if __name__ == '__main__':
     parser.add_argument('setup_argument', nargs='*', default=[])
     args = parser.parse_args()
     setup_packages(setup_arguments=args.setup_argument)
+    if failed:
+        print('The following failed: %s' % ','.join(failed))

@@ -4,7 +4,7 @@
 from .uredis import Redis
 from .uredis import Redis as StrictRedis
 
-__version__ = '0.0.16'
+__version__ = '0.0.18'
 __copyright__ = "Copyright 2016 Dwight Hubbard"
 
 all = [
