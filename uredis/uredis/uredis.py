@@ -1,9 +1,36 @@
-from .connection import Connection
-from .geo import Geo
-from .hash import Hash
+redis_components = []
+try:
+    from .connection import Connection
+    redis_components.append(Connection)
+except ImportError:
+    pass
+
+try:
+    from .geo import Geo
+    redis_components.append(Geo)
+except ImportError:
+    pass
+
+try:
+    from .hash import Hash
+    redis_components.append(Hash)
+except ImportError:
+    pass
+
 # from .hyperloglog import HyperLogLog
-from .key import Key
-from .list import List
+
+try:
+    from .key import Key
+    redis_components.append(Key)
+except ImportError:
+    pass
+
+try:
+    from .list import List
+    redis_components.append(List)
+except ImportError:
+    pass
+
 # from .pubsub import PubSub
 # from .server import Server
 # from .set import Set
@@ -12,20 +39,7 @@ from .list import List
 # from .transaction import Transaction
 
 
-class Redis(
-    Connection,
-    Geo,
-    Hash,
-    # HyperLogLog,
-    Key,
-    List,
-    # PubSub,
-    # Server,
-    # Set,
-    # SortedSet,
-    # String,
-    # Transaction
-):
+class Redis(*redis_components):
     """
     Primary Redis Client Class.
 
