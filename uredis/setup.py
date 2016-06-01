@@ -19,14 +19,16 @@ Please help with the development if you are interested in this module.""",
     url='https://github.com/dhubbard/micropython-redis',
     author='Dwight Hubbard',
     author_email="dwight@dwighthubbard.com",
-    extras_install=[
-        'micropython-redis.connection',
-        'micropython-redis.geo',
-        'micropython-redis.hash',
-        'micropython-redis.key',
-        'micropython-redis.list',
-        'micropython-redis.pubsub',
-    ],
+    extras_require = {
+        'all': [
+            'micropython-redis.connection',
+            'micropython-redis.geo',
+            'micropython-redis.hash',
+            'micropython-redis.key',
+            'micropython-redis.list',
+            'micropython-redis.pubsub',
+        ]
+    },
     install_requires=[
         'micropython-redis.client',
     ],

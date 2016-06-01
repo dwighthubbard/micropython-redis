@@ -5,7 +5,7 @@
 Although micropython-redis is designed to function with micropython, it is supported on most python 3 interpreters.   
 Use pip to install on Python3 or PyPy3.
 
-    $ pip install micropython-redis
+    $ pip install micropython-redis[all]
     
 ## Installing on micropython
 
@@ -14,10 +14,18 @@ is used to do the installation from the Python package repositories.
 
 ### Installing on micropython unix
 
-Use the micropython **upip** module to install on micropython.  The following Will install the **uredis** module in the
-default micropython lib directory:
+Use the micropython **upip** module to install on micropython.  Different redis functionalities for the redis client
+are built into different modules.  This allows for the installation of specific redis functionality without taaking 
+up space for functionality that is not used. The following Will install the **uredis** module with all the component
+ featues in the default micropython lib directory:
 
     $ micropython -m upip install micropython-redis
+    $ micropython -m upip install micropython-redis.connection
+    $ micropython -m upip install micropython-redis.geo
+    $ micropython -m upip install micropython-redis.hash
+    $ micropython -m upip install micropython-redis.key
+    $ micropython -m upip install micropython-redis.list
+    $ micropython -m upip install micropython-redis.pubsub
 
 ### Installing on micropython embedded platforms
 
@@ -36,11 +44,20 @@ current directory as shown in **Step 1** you could run:
 
     $ export MICROPYPATH="`pwd`/lib"
 
-#### Step 3. Use hte upip module to install micropython-redis into the lib directory.
+#### Step 3. Use the upip module to install micropython-redis into the lib directory.
 
 Use the **upip** module to install the **micropython-redis** package.
 
     $ micropython -m upip install micropython-redis
+
+Install the redis packages with the desired redis functionality.
+
+    $ micropython -m upip install micropython-redis.connection
+    $ micropython -m upip install micropython-redis.geo
+    $ micropython -m upip install micropython-redis.hash
+    $ micropython -m upip install micropython-redis.key
+    $ micropython -m upip install micropython-redis.list
+    $ micropython -m upip install micropython-redis.pubsub
 
 #### Step 4. Copy the lib directory to the embedded device.  
 
