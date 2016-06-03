@@ -140,6 +140,8 @@ class Client(object):
             return int(response[1:-2])
         elif response_type == '$':
             length = int(response_value)
+            if length == -1:
+                return None
             bulk_string = self.connection.socket.recv(length)
             self.connection.readline()
             return bulk_string

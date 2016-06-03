@@ -28,11 +28,54 @@ class List(Client):
             return None
         return result
 
-    def brpop(self, *args):
-        return self.execute_command('BRPOP', *args)
+    def brpop(self, *keys, timeout=0):
+        """
+        Remove and get the last element of a list or block until one is available
 
-    def brpoplpush(self, *args):
-        return self.execute_command('BRPOPLPUSH', *args)
+        Parameters
+        ----------
+        *keys
+            Key or keys to get the first element from
+
+        timeout : int, optional
+            Maximum time to block waiting for the key, if not specified will wait forever.
+
+        Returns
+        -------
+        First element from the list, or None
+        """
+        if timeout:
+            keys = tuple(list(keys) + [timeout])
+        result = self.execute_command('BRPOP', *keys)
+        if result == [] or result == ():
+            return None
+        return tuple(result)
+
+    def brpoplpush(self, src, dst, timeout=0):
+        """
+        Remove and get the last element of a list and push it to the front of another list, blocking if there is no
+        value to available.
+
+        Parameters
+        ----------
+        src : str
+            Key to pop the value from
+
+        dst : str
+            Key to prepend the value to
+
+        timeout : int, optional
+            Maximum time to block waiting for a key, if not specified or the value is 0, will wait forever.
+
+        Returns
+        -------
+        bytes
+            The bytestring of the value retrievied from the src
+        """
+        result = self.execute_command('BRPOPLPUSH', src, dst, timeout)
+        if result == []:
+            return None
+        return result
 
     def lindex(self, *args):
         return self.execute_command('LINDEX', *args)
@@ -64,8 +107,21 @@ class List(Client):
     def ltrim(self, *args):
         return self.execute_command('LTRIM', *args)
 
-    def rpop(self, *args):
-        return self.execute_command('RPOP', *args)
+    def rpop(self, name):
+        """
+        Remove and get the last element of a list
+
+        Parameters
+        ----------
+        name : str
+            Key to pop the value from
+
+        Returns
+        -------
+        bytes
+            The bytestring of the value retrievied from the src
+        """
+        return self.execute_command('RPOP', name)
 
     def rpoplpush(self, *args):
         return self.execute_command('RPOPLPUSH', *args)
