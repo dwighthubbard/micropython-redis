@@ -12,8 +12,8 @@ from unittest import main, TestCase
 import uredis
 
 
-class TestRedisListOperations(TestCase):
-    redis_test_port = 7902
+class TestSortedSetOperations(TestCase):
+    redis_test_port = 7904
 
     def setUp(self):
         self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
@@ -21,23 +21,6 @@ class TestRedisListOperations(TestCase):
 
     def tearDown(self):
         self.redis_server.shutdown()
-        self.redis_server.shutdown()
-
-    def test_lrange_empty_list(self):
-        result = self.redis_server.lrange("testlist", 0, -1)
-        uresult = self.uredis_client.lrange("utestlist", 0, -1)
-        self.assertEqual(uresult, result)
-
-    def test_blpop_empty_list_with_timeout(self):
-        result = self.redis_server.blpop('testlist', timeout=1)
-        uresult = self.uredis_client.blpop('utestlist', timeout=1)
-        self.assertEqual(uresult, result)
-
-
-    def test_lpush_new_list_integer_value(self):
-        result = self.redis_server.lpush('testlist', 1)
-        uresult = self.uredis_client.lpush('utestlist', 1)
-        self.assertEqual(uresult, result)
 
 
 if __name__ == '__main__':

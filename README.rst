@@ -46,7 +46,7 @@ Currently this module is not feature complete, here is the current status
 +---------------------+-----------------+-----------+
 | Server              | Not Implemented |           |
 +---------------------+-----------------+-----------+
-| Sets                | Not Implemented |           |
+| Sets                | Complete        | 20%       |
 +---------------------+-----------------+-----------+
 | Sorted Sets         | Not Implemented |           |
 +---------------------+-----------------+-----------+

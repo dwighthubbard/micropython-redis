@@ -6,10 +6,9 @@ from setuptools import setup
 
 
 setup(
-    name='micropython-redis.geo',
-    version='0.0.3',
-    description='redis geo module for MicroPython',
-    long_description="""This is a redis geo module implemented specifically for MicroPython.
+    name='micropython-redis.set',
+    description='redis set module for MicroPython',
+    long_description="""This is a redis set module implemented specifically for MicroPython.
 
 As a result, this module does not support functionality not available on embedded environments and it is structured to allow operating in environments with limited resources.
 
@@ -20,9 +19,10 @@ Please help with the development if you are interested in this module.""",
     author='Dwight Hubbard',
     author_email="dwight@dwighthubbard.com",
     install_requires=['micropython-redis.client'],
+    license='MIT',
     maintainer='Dwight Hubbard',
     maintainer_email='dwight@dwighthubbard.com',
-    license='MIT',
     packages=['uredis'],
+    version='0.0.3',
     zip_safe=True,
 )

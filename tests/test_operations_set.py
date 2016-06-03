@@ -12,8 +12,8 @@ from unittest import main, TestCase
 import uredis
 
 
-class TestRedisListOperations(TestCase):
-    redis_test_port = 7902
+class TestSetOperations(TestCase):
+    redis_test_port = 7903
 
     def setUp(self):
         self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
@@ -21,22 +21,28 @@ class TestRedisListOperations(TestCase):
 
     def tearDown(self):
         self.redis_server.shutdown()
-        self.redis_server.shutdown()
 
-    def test_lrange_empty_list(self):
-        result = self.redis_server.lrange("testlist", 0, -1)
-        uresult = self.uredis_client.lrange("utestlist", 0, -1)
+    def test_sadd(self):
+        result = self.redis_server.sadd("testset", 1)
+        uresult = self.uredis_client.sadd("utestset", 1)
         self.assertEqual(uresult, result)
 
-    def test_blpop_empty_list_with_timeout(self):
-        result = self.redis_server.blpop('testlist', timeout=1)
-        uresult = self.uredis_client.blpop('utestlist', timeout=1)
+    def test_scard(self):
+        result = self.redis_server.sadd("testset", 1)
+        uresult = self.uredis_client.sadd("utestset", 1)
+        result = self.redis_server.scard("testset")
+        uresult = self.uredis_client.scard("utestset")
         self.assertEqual(uresult, result)
 
+    def test_sdiff(self):
+        result = self.redis_server.sadd("testset", 1, 2)
+        result = self.redis_server.sadd("testset2", 2, 3)
+        uresult = self.uredis_client.sadd("utestset", 1, 2)
+        uresult = self.uredis_client.sadd("utestset2", 2, 3)
 
-    def test_lpush_new_list_integer_value(self):
-        result = self.redis_server.lpush('testlist', 1)
-        uresult = self.uredis_client.lpush('utestlist', 1)
+        result = self.redis_server.sdiff("testset", 'testset2')
+        uresult = self.uredis_client.sdiff("utestset", 'utestset2')
+
         self.assertEqual(uresult, result)
 
 

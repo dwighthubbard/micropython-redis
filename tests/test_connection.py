@@ -14,7 +14,7 @@ import uredis
 
 
 class TestRedisConnection(TestCase):
-    redis_test_port = 7899
+    redis_test_port = 7900
 
     def setUp(self):
         self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
@@ -35,8 +35,11 @@ class TestRedisConnection(TestCase):
 
 
         # This shouldn't generate an exception
-        redis_client = redis.Redis(host='127.0.0.1', port=self.redis_test_port+1, password='test')
-        uredis_client = uredis.Redis(host='127.0.0.1', port=self.redis_test_port+1, password='test')
+        try:
+            redis_client = redis.Redis(host='127.0.0.1', port=self.redis_test_port+1, password='test')
+            uredis_client = uredis.Redis(host='127.0.0.1', port=self.redis_test_port+1, password='test')
+        finally:
+            redis_server.shutdown()
 
     def test_echo(self):
         result = self.redis_server.echo("test")

@@ -3,7 +3,7 @@
 # memory.
 import os
 
-__version__ = '0.0.0'
+__version__ = '0.0.3'
 __copyright__ = "Copyright 2016 Dwight Hubbard"
 
 all = []
@@ -12,8 +12,4 @@ for f in os.listdir(os.path.dirname(__file__)):
         f=f.split('.')[0]
         all.append(f)
 
-def enable_redispy_compat():
-    global Redis, StrictRedis
-
-    from .uredis import Redis
-    StrictRedis = Redis
+from .uredis import Redis, StrictRedis

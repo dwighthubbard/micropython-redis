@@ -33,7 +33,13 @@ except ImportError:
 
 # from .pubsub import PubSub
 # from .server import Server
-# from .set import Set
+
+try:
+    from .set import Set
+    redis_components.append(Set)
+except ImportError:
+    pass
+
 # from .sortedset import SortedSet
 # from .string import String
 # from .transaction import Transaction
@@ -47,4 +53,8 @@ class Redis(*redis_components):
 
     This class is intended to be mostly compatible with the redis-py redis.Redis()/redis.StrictRedis() classes.
     """
+    pass
+
+
+class StrictRedis(Redis):
     pass

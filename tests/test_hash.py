@@ -14,7 +14,7 @@ import uredis
 
 
 class TestRedisConnection(TestCase):
-    redis_test_port = 7899
+    redis_test_port = 7901
 
     def setUp(self):
         self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
