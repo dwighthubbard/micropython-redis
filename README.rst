@@ -26,19 +26,19 @@ Currently this module is not feature complete, here is the current status
 +---------------------+-----------------+-----------+------------------------+
 | Redis Command Group | Implemented     | Tests     | Notes                  |
 +=====================+=================+===========+========================+
-| Cluster             | Not Planned     |           |
+| Cluster             | Not Planned     |           |                        |
 +---------------------+-----------------+-----------+------------------------+
-| Connection          | Complete        | 100%      |
+| Connection          | Complete        | 100%      |                        |
 +---------------------+-----------------+-----------+------------------------+
-| Geo                 | Complete        | None      |
+| Geo                 | Complete        | None      |                        |
 +---------------------+-----------------+-----------+------------------------+
-| Hashes              | Complete        | 100%      |
+| Hashes              | Complete        | 100%      |                        |
 +---------------------+-----------------+-----------+------------------------+
-| HyperLogLog         | Not Implemented |           |
+| HyperLogLog         | Not Implemented |           |                        |
 +---------------------+-----------------+-----------+------------------------+
-| Keys                | Completed       | None      |
+| Keys                | Completed       | None      |                        |
 +---------------------+-----------------+-----------+------------------------+
-| Lists               | Complete        | 30%       |
+| Lists               | Complete        | 40%       |                        |
 +---------------------+-----------------+-----------+------------------------+
 | Publish/Subscribe   | Not Complete    | None      | API works differently  |
 |                     |                 |           | than other             |

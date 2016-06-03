@@ -106,7 +106,6 @@ class TestRedisListOperations(TestCase):
     # def test_lrem(self, *args):
     # def test_lset(self, *args):
     # def test_ltrim(self, *args):
-    # def test_rpoplpush(self, *args):
     # def test_rpush(self, *args):
     # def test_rpushx(self, *args):
 
