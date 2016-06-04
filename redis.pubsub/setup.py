@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis.pubsub',
-    version='0.0.0',
+    version='0.0.29',
     description='redis pubsub module for MicroPython',
     long_description="""This is a redis pubsub module implemented specifically for MicroPython.
 

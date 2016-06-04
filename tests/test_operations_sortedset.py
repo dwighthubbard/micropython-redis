@@ -13,7 +13,7 @@ import uredis
 
 
 class TestSortedSetOperations(TestCase):
-    redis_test_port = 7904
+    redis_test_port = 7905
 
     def setUp(self):
         self.redis_server = redislite.Redis(serverconfig={'port': self.redis_test_port})
@@ -21,6 +21,18 @@ class TestSortedSetOperations(TestCase):
 
     def tearDown(self):
         self.redis_server.shutdown()
+
+    def test_zadd(self):
+        result = self.redis_server.zadd("testset", 'one', 1)
+        uresult = self.uredis_client.zadd("utestset", 'one', 1)
+        self.assertEqual(uresult, result)
+
+    def test_zcard(self):
+        result = self.redis_server.zadd("testset", 'one', 1)
+        uresult = self.uredis_client.zadd("utestset", 'one', 1)
+        result = self.redis_server.zcard("testset")
+        uresult = self.uredis_client.zcard("utestset")
+        self.assertEqual(uresult, result)
 
 
 if __name__ == '__main__':

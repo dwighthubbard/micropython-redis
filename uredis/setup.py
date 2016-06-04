@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis',
-    version='0.0.0',
+    version='0.0.29',
     description='redis module for MicroPython',
     long_description="""This is a redis client module implemented specifically for MicroPython.
 
@@ -29,8 +29,8 @@ Please help with the development if you are interested in this module.""",
             'micropython-redis.list',
             'micropython-redis.pubsub',  # Pubsub works differently and isn't currently implemented
             'micropython-redis.set',
-            # 'micropython-redis.sortedset',
-            # 'micropython-redis.string',
+            'micropython-redis.sortedset',
+            'micropython-redis.string',
         ]
     },
     install_requires=[

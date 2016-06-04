@@ -47,13 +47,13 @@ Currently this module is not feature complete, here is the current status
 |                     |                 |           | resources and require  |
 |                     |                 |           | more work to implement.|
 +---------------------+-----------------+-----------+------------------------+
-| Scripting           | Not Planned     |           |                        |
+| Scripting           | Not Implemented |           |                        |
 +---------------------+-----------------+-----------+------------------------+
 | Server              | Not Implemented |           |                        |
 +---------------------+-----------------+-----------+------------------------+
 | Sets                | Complete        | 20%       |                        |
 +---------------------+-----------------+-----------+------------------------+
-| Sorted Sets         | Not Implemented |           |                        |
+| Sorted Sets         | Complete        | 0%        |                        |
 +---------------------+-----------------+-----------+------------------------+
 | Strings             | Not Implemented |           |                        |
 +---------------------+-----------------+-----------+------------------------+

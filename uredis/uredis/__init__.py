@@ -3,7 +3,7 @@
 # memory.
 import os
 
-__version__ = '0.0.0'
+__version__ = '0.0.29'
 __copyright__ = "Copyright 2016 Dwight Hubbard"
 
 all = []

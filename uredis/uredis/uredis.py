@@ -31,7 +31,12 @@ try:
 except ImportError:
     pass
 
-# from .pubsub import PubSub
+try:
+    from .pubsub import PubSub
+    redis_components.append(PubSub)
+except ImportError:
+    pass
+
 # from .server import Server
 
 try:
@@ -40,8 +45,19 @@ try:
 except ImportError:
     pass
 
-# from .sortedset import SortedSet
-# from .string import String
+try:
+    from .sortedset import SortedSet
+    redis_components.append(SortedSet)
+except ImportError:
+    pass
+
+
+try:
+    from .string import String
+    redis_components.append(String)
+except ImportError:
+    pass
+
 # from .transaction import Transaction
 
 
