@@ -23,6 +23,6 @@ Please help with the development if you are interested in this module.""",
     maintainer='Dwight Hubbard',
     maintainer_email='dwight@dwighthubbard.com',
     packages=['uredis'],
-    version='0.0.0',
+    version='0.0.34',
     zip_safe=True,
 )
