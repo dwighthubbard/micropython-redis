@@ -19,11 +19,40 @@ def change_directory(path):
         os.chdir(cwd)
 
 
+def git_revision_count():
+    try:
+        result = subprocess.check_output(['git', 'rev-list', '--all']).decode().split(os.linesep)
+    except subprocess.CalledProcessError:
+        result = 0
+    return len(result)
+
+
+def infer_version():
+    version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', str(git_revision_count()))
+    return version
+
+def update_dunder_init_version(filename, version):
+    if not version:
+        version = infer_version()
+    if os.path.exists(filename):
+        print('In filename %r, setting __version__ = %r' % (filename, version))
+        infile = None
+        with open(filename) as read_handle:
+            infile = read_handle.readlines()
+        if infile:
+            with open(filename, 'w') as write_handle:
+                for line in infile:
+                    if '__version__' in line:
+                        temp = line.split('=')
+                        temp[-1] = ' ' + repr(version) + '\n'
+                        line = '='.join(temp)
+                    write_handle.write(line)
+
 def update_setup_version(filename=None, version=None):
     if not filename:
         filename = 'setup.py'
     if not version:
-        version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', '0')
+        version = infer_version()
     infile = None
     with open(filename) as setup_handle:
         infile = setup_handle.readlines()
@@ -35,27 +64,24 @@ def update_setup_version(filename=None, version=None):
                     temp[-1] = repr(version) + ',\n'
                     line = '='.join(temp)
                 setup_handle.write(line)
-    if os.path.exists('uredis/__init__.py'):
-        infile = None
-        with open('uredis/__init__.py') as init_handle:
-            infile = init_handle.readlines()
-        if infile:
-            with open('uredis/__init__.py', 'w') as init_handle:
-                for line in infile:
-                    if '__version__' in line:
-                        temp = line.split('=')
-                        temp[-1] = ' ' + repr(version) + '\n'
-                        line = '='.join(temp)
-                    init_handle.write(line)
 
 def setup_in_directory(path, setup_arguments=None, version=None):
     global failed
+
+    if not version:
+        version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', '0')
     if not setup_arguments:
         setup_arguments = ['sdist']
     if not os.path.exists('dist'):
         os.mkdir('dist')
+    print('*'*80)
+    print('Processing', path)
+    print('*'*80)
     with change_directory(path):
+        for dunder_init in ['uredis/__init__.py', 'uredis_modular/__init__.py']:
+            update_dunder_init_version(dunder_init, version)
         update_setup_version(version=version)
+
         try:
             subprocess.check_call(
                 [
@@ -77,7 +103,7 @@ def setup_packages(setup_arguments=None):
     if not setup_arguments:
         setup_arguments = ['sdist']
     for directory in os.listdir('.'):
-        if directory.startswith('redis.') or directory in ['uredis']:
+        if directory.startswith('redis.') or directory in ['uredis', 'uredis_modular']:
             setup_in_directory(directory, setup_arguments=setup_arguments)
 
 
@@ -85,6 +111,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('setup_argument', nargs='*', default=[])
     args = parser.parse_args()
+
+    os.environ.setdefault('TRAVIS_BUILD_NUMBER', str(git_revision_count()))
     setup_packages(setup_arguments=args.setup_argument)
     if failed:
         print('The following failed: %s' % ','.join(failed))

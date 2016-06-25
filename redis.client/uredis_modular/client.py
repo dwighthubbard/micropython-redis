@@ -3,11 +3,6 @@
 Redis Client for embedded python environments
 """
 import socket
-try:  # pragma: no cover
-    import ssl
-    ssl_support = True
-except ImportError:  # pragma: no cover
-    ssl_support = False
 
 
 class RedisError(Exception):
@@ -19,6 +14,9 @@ class InvalidResponse(RedisError):
 
 
 class ConnectionError(Exception):
+    pass
+
+class Unsupported(Exception):
     pass
 
 
@@ -42,7 +40,7 @@ class Connection(object):
             Socket timeout in seconds, default=10
         """
         if not host:
-            host = '127.0.0.1'
+            host = '192.168.4.2'
 
         self.host = host
         self.port = int(port)
@@ -56,22 +54,25 @@ class Connection(object):
         self.socket = socket.socket()
         self.socket.connect(socket.getaddrinfo(self.host, self.port)[0][-1])
 
-        if ssl_support and use_ssl:
-            self.socket = ssl.wrap_socket(self.socket)
+        if use_ssl:
+            try:  # pragma: no cover
+                import ssl
+                self.socket = ssl.wrap_socket(self.socket)
+            except ImportError:  # pragma: no cover
+                raise Unsupported('SSL support is not available')
 
     def disconnect(self):
         self.socket.close()
 
     def send_command(self, command, *args):
-        com = command.encode()
+        self.socket.send(command.encode())
         for arg in args:
-            com += b' '
+            self.socket.send(b' ')
             if isinstance(arg, str):
-                com += repr(arg).encode()
+                self.socket.send(repr(arg).encode())
             else:
-                com += repr(arg)
-        com += b'\r\n'
-        self.socket.send(com)
+                self.socket.send(repr(arg))
+        self.socket.send(b'\r\n')
 
     def readline(self):
         line_buffer = b''
@@ -90,15 +91,15 @@ class Connection(object):
 class Client(object):
     def __init__(self, host=None, port=6379, password=None):
         if not host:
-            host = '127.0.0.1'
+            host = '192.168.4.2'
         self.connection = Connection(host, port)
 
         if password:
             self.connection.send_command('AUTH', password)
 
-    def create_redis_array_string(self, items):
+    def send_redis_array_string(self, items):
         """
-        Generate a redis array string
+        Send a redis array string
 
         Parameters
         ----------
@@ -110,19 +111,21 @@ class Client(object):
         bytes
             Redis RESP bytestream representation of the array
         """
-        stream = '*{0}\r\n'.format(len(items)).encode()
+
+        self.connection.socket.send(b'*')
+        self.connection.socket.send(str(len(items)).encode())
+        self.connection.socket.send(b'\r\n')
 
         # Add each element to the stream in turn
         for item in items:
             item_bytestream = self.convert_to_bytestream(item)
 
             # Add the item length to the stream
-            stream += b'$' + str(len(item_bytestream)).encode() + b'\r\n'
-
-            # Now add the data
-            stream += item_bytestream + b'\r\n'
-
-        return stream
+            self.connection.socket.send(b'$')
+            self.connection.socket.send(str(len(item_bytestream)).encode())
+            self.connection.socket.send(b'\r\n')
+            self.connection.socket.send(item_bytestream)
+            self.connection.socket.send(b'\r\n')
 
     def execute_command(self, command, *args):
         self.run_command(command, *args)
@@ -153,8 +156,7 @@ class Client(object):
     def run_command(self, command, *args):
         # self.connection.send_command(command, *args)
         args = [command] + list(args)
-        bytestream = self.create_redis_array_string(args)
-        self.connection.socket.send(bytestream)
+        self.send_redis_array_string(args)
 
     def convert_to_bytestream(self, value):
         """
