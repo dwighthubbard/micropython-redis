@@ -65,15 +65,14 @@ class Connection(object):
         self.socket.close()
 
     def send_command(self, command, *args):
-        com = command.encode()
+        self.socket.send(command.encode())
         for arg in args:
-            com += b' '
+            self.socket.send(b' ')
             if isinstance(arg, str):
-                com += repr(arg).encode()
+                self.socket.send(repr(arg).encode())
             else:
-                com += repr(arg)
-        com += b'\r\n'
-        self.socket.send(com)
+                self.socket.send(repr(arg))
+        self.socket.send(b'\r\n')
 
     def readline(self):
         line_buffer = b''
@@ -113,14 +112,20 @@ class Client(object):
             Redis RESP bytestream representation of the array
         """
 
-        self.connection.socket.send(b'*'+ str(len(items)).encode() + b'\r\n')
+        self.connection.socket.send(b'*')
+        self.connection.socket.send(str(len(items)).encode())
+        self.connection.socket.send(b'\r\n')
 
         # Add each element to the stream in turn
         for item in items:
             item_bytestream = self.convert_to_bytestream(item)
 
             # Add the item length to the stream
-            self.connection.socket.send(b'$' + str(len(item_bytestream)).encode() + b'\r\n' + item_bytestream + b'\r\n')
+            self.connection.socket.send(b'$')
+            self.connection.socket.send(str(len(item_bytestream)).encode())
+            self.connection.socket.send(b'\r\n')
+            self.connection.socket.send(item_bytestream)
+            self.connection.socket.send(b'\r\n')
 
     def execute_command(self, command, *args):
         self.run_command(command, *args)
