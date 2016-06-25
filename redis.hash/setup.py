@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis.hash',
-    version='0.0.43',
+    version='0.0.44',
     description='redis hash module for MicroPython',
     long_description="""This is a redis hash module implemented specifically for MicroPython.
 
