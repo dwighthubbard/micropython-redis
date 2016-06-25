@@ -19,9 +19,21 @@ def change_directory(path):
         os.chdir(cwd)
 
 
+def git_revision_count():
+    try:
+        result = subprocess.check_output(['git', 'rev-list', '--all']).decode().split(os.linesep)
+    except subprocess.CalledProcessError:
+        result = 0
+    return len(result)
+
+
+def infer_version():
+    version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', str(git_revision_count()))
+    return version
+
 def update_dunder_init_version(filename, version):
     if not version:
-        version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', '0')
+        version = infer_version()
     if os.path.exists(filename):
         print('In filename %r, setting __version__ = %r' % (filename, version))
         infile = None
@@ -40,7 +52,7 @@ def update_setup_version(filename=None, version=None):
     if not filename:
         filename = 'setup.py'
     if not version:
-        version = '0.0.%s' % os.environ.get('TRAVIS_BUILD_NUMBER', '0')
+        version = infer_version()
     infile = None
     with open(filename) as setup_handle:
         infile = setup_handle.readlines()
@@ -99,6 +111,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('setup_argument', nargs='*', default=[])
     args = parser.parse_args()
+
+    os.environ.setdefault('TRAVIS_BUILD_NUMBER', str(git_revision_count()))
     setup_packages(setup_arguments=args.setup_argument)
     if failed:
         print('The following failed: %s' % ','.join(failed))
