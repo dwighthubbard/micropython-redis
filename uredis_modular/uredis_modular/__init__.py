@@ -1,3 +1,3 @@
-__version__ = '0.0.44'
+__version__ = '0.0.46'
 
 all = ['client', 'geo', 'hash', 'key', 'list', 'pubsub', 'set', 'sortedset']

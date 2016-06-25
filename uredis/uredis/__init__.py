@@ -1,3 +1,3 @@
-__version__ = '0.0.44'
+__version__ = '0.0.46'
 
 from .uredis import Redis, StrictRedis

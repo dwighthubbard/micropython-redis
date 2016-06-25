@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis.key',
-    version='0.0.44',
+    version='0.0.46',
     description='redis key module for MicroPython',
     long_description="""This is a redis key module implemented specifically for MicroPython.
 
