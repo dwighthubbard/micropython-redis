@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis-modular',
-    version='0.0.51',
+    version='0.0.52',
     description='redis module for MicroPython that allows importing only a subset of the redis functionality for low memory environments',
     long_description="""This is a redis client module implemented specifically for MicroPython.
 

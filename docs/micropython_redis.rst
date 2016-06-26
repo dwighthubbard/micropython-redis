@@ -10,25 +10,25 @@ Module
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: uredis.client
+.. automodule:: uredisi_modular.client
     :synopsis: Redis client
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: uredis.connection
+.. automodule:: uredisi_modular.connection
     :synopsis: Redis client with only Redis Connection command functionality
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: uredis.keys
+.. automodule:: uredisi_modular.keys
     :synopsis: Redis client with Redis Keys command functionality
     :members:
     :inherited-members:
     :show-inheritance:
 
-.. automodule:: uredis.list
+.. automodule:: uredisi_modular.list
     :synopsis: Redis client with Redis Lists command functionality
     :members:
     :inherited-members:
@@ -48,86 +48,86 @@ uredis.StrictRedis() Class
    :inherited-members:
    :show-inheritance:
 
-uredis.connection.Connection() Class
-====================================
-.. autoclass:: uredis.connection.Connection
+uredisi_modular.connection.Connection() Class
+=============================================
+.. autoclass:: uredisi_modular.connection.Connection
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.geo.Geo() Class
-======================
-.. autoclass:: uredis.geo.Geo
+uredisi_modular.geo.Geo() Class
+===============================
+.. autoclass:: uredisi_modular.geo.Geo
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.hash.Hash() Class
-========================
-.. autoclass:: uredis.hash.Hash
+uredisi_modular.hash.Hash() Class
+=================================
+.. autoclass:: uredisi_modular.hash.Hash
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.hyperloglog.HyperLogLog() Class
-======================================
-.. autoclass:: uredis.hyperloglog.HyperLogLog
+uredisi_modular.hyperloglog.HyperLogLog() Class
+===============================================
+.. autoclass:: uredisi_modular.hyperloglog.HyperLogLog
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.key.Key() Class
-======================
-.. autoclass:: uredis.key.Key
+uredisi_modular.key.Key() Class
+===============================
+.. autoclass:: uredisi_modular.key.Key
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.list.List() Class
-========================
-.. autoclass:: uredis.list.List
+uredisi_modular.list.List() Class
+=================================
+.. autoclass:: uredisi_modular.list.List
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.pubsub.PubSub() Class
-============================
-.. autoclass:: uredis.pubsub.PubSub
+uredisi_modular.pubsub.PubSub() Class
+=====================================
+.. autoclass:: uredisi_modular.pubsub.PubSub
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.server.Server() Class
-============================
+uredisi_modular.server.Server() Class
+=====================================
 .. autoclass:: redis.server.Server
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.set.Set() Class
-======================
-.. autoclass:: uredis.set.Set
+uredisi_modular.set.Set() Class
+===============================
+.. autoclass:: uredisi_modular.set.Set
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.sortedset.SortedSet() Class
-==================================
-.. autoclass:: uredis.sortedset.SortedSet
+uredisi_modular.sortedset.SortedSet() Class
+===========================================
+.. autoclass:: uredisi_modular.sortedset.SortedSet
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.string.String() Class
-============================
-.. autoclass:: uredis.string.String
+uredisi_modular.string.String() Class
+=====================================
+.. autoclass:: uredisi_modular.string.String
    :members:
    :inherited-members:
    :show-inheritance:
 
-uredis.transaction.Transaction() Class
-======================================
-.. autoclass:: uredis.transaction.Transaction
+uredisi_modular.transaction.Transaction() Class
+===============================================
+.. autoclass:: uredisi_modular.transaction.Transaction
    :members:
    :inherited-members:
    :show-inheritance:

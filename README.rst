@@ -1,6 +1,24 @@
 .. image:: https://travis-ci.org/dwighthubbard/micropython-redis.svg?branch=master
     :target: https://travis-ci.org/dwighthubbard/micropython-redis
 
+.. image:: https://img.shields.io/pypi/dm/micropython-redis.svg
+    :target: https://pypi.python.org/pypi/micropython-redis/
+
+.. image:: https://img.shields.io/pypi/v/micropython-redis.svg
+    :target: https://pypi.python.org/pypi/micropython-redis/
+
+.. image:: https://img.shields.io/badge/micropython.svg
+    :target: https://pypi.python.org/pypi/micropython-redis/
+
+.. image:: https://img.shields.io/pypi/l/micropython-redis.svg
+    :target: https://pypi.python.org/pypi/micropython-redis/
+
+---------------------------------------------------------------------
+
+.. image:: https://readthedocs.org/projects/micropython-redis/badge/?version=latest
+    :target: http://micropython-redis.readthedocs.io/en/latest/
+    :alt: Documentation
+
 -----------------------------------------------------------------------------------------------------------------------
 
 micropython-redis
@@ -13,7 +31,7 @@ limited resources.
 
 In order to function on microcontrollers without multitasking operating systems the implementation does not use
 threading or multiprocessing.  As a result functionality that relies on these features such as connection pools
-are not available.
+is not available.
 
 This implementation can utilize ssl and floating point support if it is available but it will operate with reduced
 functionality if it is not.

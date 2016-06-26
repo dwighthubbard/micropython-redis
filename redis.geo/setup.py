@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
     name='micropython-redis.geo',
-    version='0.0.51',
+    version='0.0.52',
     description='redis geo module for MicroPython',
     long_description="""This is a redis geo module implemented specifically for MicroPython.
 
