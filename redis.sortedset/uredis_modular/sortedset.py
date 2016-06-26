@@ -22,13 +22,10 @@ class SortedSet(Client):
         for index in range(0, len(args), 2):
             name = args[index]
             value = args[index+1]
-            print(name, value)
             if isinstance(value, int):
                 value = float(value)
             new_args.append(value)
             new_args.append(name)
-
-        print(new_args)
         return self.execute_command('ZADD', *new_args)
 
     def zcard(self, *args):

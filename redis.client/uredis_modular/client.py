@@ -45,12 +45,6 @@ class Connection(object):
         self.host = host
         self.port = int(port)
 
-        # self.host = socket.gethostbyname(host)
-        # except socket.gaierror:
-        #     raise ConnectionError('DNS Lookup failed')
-
-        # self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # self.socket.settimeout(timeout)
         self.socket = socket.socket()
         self.socket.connect(socket.getaddrinfo(self.host, self.port)[0][-1])
 
@@ -80,7 +74,7 @@ class Connection(object):
         while c:
             line_buffer += c
             try:
-                if line_buffer and line_buffer[-2:] == b'\r\n':
+                if len(line_buffer) > 1 and line_buffer[-2:] == b'\r\n':
                     break
             except IndexError:
                 pass

@@ -5,7 +5,7 @@ class List(Client):
     """
     Redis Client with support for all Redis List operations
     """
-    def blpop(self, *keys, timeout=0):
+    def blpop(self, *keys, **kwargs):
         """
         Remove and get the first element of a list or block until one is available
 
@@ -21,14 +21,14 @@ class List(Client):
         -------
         First element from the list, or None
         """
-        if timeout:
-            keys = tuple(list(keys) + [timeout])
+        timeout = kwargs.get('timeout', 0)
+        keys = tuple(list(keys) + [timeout])
         result = self.execute_command('BLPOP', *keys)
         if result == []:
             return None
         return result
 
-    def brpop(self, *keys, timeout=0):
+    def brpop(self, *keys, **kwargs):
         """
         Remove and get the last element of a list or block until one is available
 
@@ -44,8 +44,8 @@ class List(Client):
         -------
         First element from the list, or None
         """
-        if timeout:
-            keys = tuple(list(keys) + [timeout])
+        timeout = kwargs.get('timeout', 0)
+        keys = tuple(list(keys) + [timeout])
         result = self.execute_command('BRPOP', *keys)
         if result == [] or result == ():
             return None
