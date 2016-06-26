@@ -1,13 +1,10 @@
 .. image:: https://travis-ci.org/dwighthubbard/micropython-redis.svg?branch=master
     :target: https://travis-ci.org/dwighthubbard/micropython-redis
 
-.. image:: https://img.shields.io/pypi/dm/micropython-redis.svg
-    :target: https://pypi.python.org/pypi/micropython-redis/
-
 .. image:: https://img.shields.io/pypi/v/micropython-redis.svg
     :target: https://pypi.python.org/pypi/micropython-redis/
 
-.. image:: https://img.shields.io/badge/micropython.svg
+.. image:: https://img.shields.io/badge/python-micropython-blue.svg
     :target: https://pypi.python.org/pypi/micropython-redis/
 
 .. image:: https://img.shields.io/pypi/l/micropython-redis.svg
