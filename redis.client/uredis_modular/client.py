@@ -2,9 +2,6 @@
 """
 Redis Client for embedded python environments
 """
-import socket
-
-
 class RedisError(Exception):
     pass
 
@@ -39,6 +36,11 @@ class Connection(object):
         timeout : int, optional
             Socket timeout in seconds, default=10
         """
+        try:
+            import usocket as socket
+        except ImportError
+            import socket
+
         if not host:
             host = '192.168.4.2'
 
