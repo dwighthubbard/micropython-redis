@@ -38,7 +38,7 @@ class Connection(object):
         """
         try:
             import usocket as socket
-        except ImportError
+        except ImportError:
             import socket
 
         if not host:
