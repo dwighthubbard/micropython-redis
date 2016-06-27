@@ -10,6 +10,7 @@ Table of Contents
    :maxdepth: 2
 
    install.md
+   usage.md
    micropython_redis.rst
 
 
