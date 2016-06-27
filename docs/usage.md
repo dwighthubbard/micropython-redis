@@ -1,6 +1,6 @@
-#Usage
+# Usage
 
-The micropython-redis module provides 3 different client interfaces.  
+The micropython-redis module provides 3 different redis client interfaces.  
 Each of which has different benefits and tradeoffs.
 
 In the following section, the resource estimates are based on usage
