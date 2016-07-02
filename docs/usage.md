@@ -29,7 +29,7 @@ uses about ~6.5kb.  Then each functionality module increases the
 resource usage by 1kb to 6kb depending on the compexity of 
 the functinality submodule.
 
-For example using the redis_modular.list.List() submodule provides
+For example using the uredis_modular.list.List() submodule provides
 all of the redis server List functionality but uses 10kb to import.
 
 ## Low level access using the uredis_modular.client.Client() class
